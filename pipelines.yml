@@ -6,11 +6,3 @@ pipelines:
         execution: 
           onExecute:
             - echo "Step 1"
-      - name: Second_Step
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: First_Step
-        execution:
-          onExecute:
-            - echo "Step 2"
