@@ -1,1 +1,34 @@
+pipelines:
+  - name: First_Pipeline
+    steps:
+      - name: First_Step
+        type: Bash
+        execution: 
+          onExecute:
+            - echo "Step 1"
+      - name: Second_Step
+        type: Bash
+        execution:
+          onExecute:
+            - echo "Step 2"
+      - name: Third_Step
+        type: Bash
+        execution:
+          onExecute:
+            - echo "Step 3"
 
+      - name: Fourth_Step
+        type: Bash
+        execution:
+          onExecute:
+            - echo "Step 4"
+      - name: Fifth_Step
+        type: Bash
+        execution:
+          onExecute:
+            - echo "Step 5"
+      - name: Sixth_Step
+        type: Bash
+        execution:
+          onExecute:
+            - echo "Step 6"
