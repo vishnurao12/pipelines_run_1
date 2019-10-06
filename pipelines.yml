@@ -21,6 +21,7 @@ pipelines:
         configuration:
           inputSteps:
             - name: Second_Step
+            - name: First_Step
         execution: 
           onExecute:
             - echo "Step 2"
@@ -30,6 +31,8 @@ pipelines:
         configuration:
           inputSteps:
             - name: Third_Step
+            - name: Second_Step
+            - name: First_Step
         execution: 
           onExecute:
             - echo "Step 2"
@@ -39,6 +42,9 @@ pipelines:
         configuration:
           inputSteps:
             - name: Fourth_Step
+            - name: Third_Step
+            - name: Second_Step
+            - name: First_Step
         execution: 
           onExecute:
             - echo "Step 2"
@@ -48,6 +54,10 @@ pipelines:
         configuration:
           inputSteps:
             - name: Fifth_Step
+            - name: Fourth_Step
+            - name: Third_Step
+            - name: Second_Step
+            - name: First_Step
         execution: 
           onExecute:
             - echo "Step 2"
@@ -57,6 +67,11 @@ pipelines:
         configuration:
           inputSteps:
             - name: Sixth_Step
+            - name: Fifth_Step
+            - name: Fourth_Step
+            - name: Third_Step
+            - name: Second_Step
+            - name: First_Step
         execution: 
           onExecute:
             - echo "Step 2"
