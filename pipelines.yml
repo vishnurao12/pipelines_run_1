@@ -16,7 +16,7 @@ pipelines:
           onExecute:
             - echo "Step 2"
             
-      - name: Third_Step
+      - name: number_sometimes_shows_up_below
         type: Bash
         configuration:
           inputSteps:
@@ -29,7 +29,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: Third_Step
+            - name: number_sometimes_shows_up_below
         execution: 
           onExecute:
             - echo "Step 2"
