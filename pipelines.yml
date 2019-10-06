@@ -20,9 +20,43 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: First_Step
             - name: Second_Step
         execution: 
           onExecute:
             - echo "Step 2"
-        
+          
+      - name: Fourth_Step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Third_Step
+        execution: 
+          onExecute:
+            - echo "Step 2"
+            
+      - name: Fifth_Step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Fourth_Step
+        execution: 
+          onExecute:
+            - echo "Step 2"
+            
+      - name: Sixth_Step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Fifth_Step
+        execution: 
+          onExecute:
+            - echo "Step 2"
+            
+      - name: Seventh_Step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Sixth_Step
+        execution: 
+          onExecute:
+            - echo "Step 2"
