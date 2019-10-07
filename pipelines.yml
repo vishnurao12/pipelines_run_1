@@ -3,8 +3,6 @@ pipelines:
     steps:
       - name: First_Step
         type: Bash
-        integerations:
-          - name: simple_mail
         execution: 
           onExecute:
             - echo "Step 1"
