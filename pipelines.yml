@@ -9,7 +9,7 @@ pipelines:
         execution: 
           onExecute:
             - echo "Step 1"
-            - send_notification simple_mail --recipients 'nawaz@gmail.com'
+            - send_notification simple_mail --recipients 'khazinawaz@gmail.com'
             
       - name: Second_Step
         type: Bash
