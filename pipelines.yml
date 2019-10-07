@@ -3,9 +3,12 @@ pipelines:
     steps:
       - name: First_Step
         type: Bash
+        integerations:
+          - name: simple_mail
         execution: 
           onExecute:
             - echo "Step 1"
+            - send_notification simple_mail --recipients 'nawaz@gmail.com'
             
       - name: Second_Step
         type: Bash
