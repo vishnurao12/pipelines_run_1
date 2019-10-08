@@ -20,7 +20,7 @@ pipelines:
           onExecute:
             - echo "Step 2"
             
-      - name: number_sometimes_shows_up_below
+      - name: Third_Step
         type: Bash
         configuration:
           inputSteps:
@@ -33,7 +33,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: number_sometimes_shows_up_below
+            - name: Third_Step
         execution: 
           onExecute:
             - echo "Step 2"
