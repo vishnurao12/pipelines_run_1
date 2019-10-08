@@ -1,5 +1,5 @@
 pipelines:
-  - name: First_Pipeline
+  - name: First_Pipeline_Long_Pipeline_Name_Long
     steps:
       - name: First_Step
         type: Bash
