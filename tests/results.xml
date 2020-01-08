@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<testsuite name="HeadlessChrome 79.0.3945 (Mac OS X 10.14.5)" package="" timestamp="2020-02-11T07:07:50" id="0" hostname="khazina.local" tests="6" errors="0" failures="0" time="0.275">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/79.0.3945.0 Safari/537.36"/>
+  </properties>
+  <testcase name="AppComponent should create the app" time="0.076" classname="AppComponent"/>
+  <testcase name="AppComponent should initialize the app" time="0.035" classname="AppComponent"/>
+  <testcase name="TutorialPage should create the tutorial page" time="0.024" classname="TutorialPage"/>
+  <testcase name="TutorialPage should check the tutorial status" time="0.102" classname="TutorialPage"/>
+  <testcase name="TabsPage should create the tabs page" time="0.015" classname="TabsPage"/>
+  <testcase name="SpeakerListPage should create the speaker list page" time="0.023" classname="SpeakerListPage"/>
+  <system-out>
+    <![CDATA[HeadlessChrome 79.0.3945 (Mac OS X 10.14.5) INFO: 'Redefining LocalForage driver: cordovaSQLiteDriver'
+,HeadlessChrome 79.0.3945 (Mac OS X 10.14.5) INFO: 'Redefining LocalForage driver: cordovaSQLiteDriver'
+,HeadlessChrome 79.0.3945 (Mac OS X 10.14.5) INFO: 'Redefining LocalForage driver: cordovaSQLiteDriver'
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

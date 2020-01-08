@@ -1,29 +1,15 @@
-resources:
-  - name: self_repo
-    type: GitRepo
-    configuration:
-      path: Khazinawaz/pipelines_run_1
-      branches:
-        include: ^master$
-      gitProvider: nawaz_gh
-
 pipelines:
   - name: First_Pipeline_Long_Pipeline_Name_Long
-    configuration:
-      runtime:
-        type: host
     steps:
       - name: First_Step
         type: Bash
         configuration:
-          inputResources:
-            - name: self_repo
+          integrations:
+            - name: simple_mail
         execution: 
           onExecute:
-            - pushd "$res_self_repo_resourcePath/"
-            - save_tests tests
-            - ls .
-            - popd
+            - echo "Step 1"
+            - send_notification simple_mail --recipients 'khazinawaz@gmail.com'
             
       - name: Second_Step
         type: Bash
@@ -52,4 +38,3 @@ pipelines:
           onExecute:
             - echo "Step 2"
             
-    
