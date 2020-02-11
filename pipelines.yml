@@ -21,7 +21,7 @@ pipelines:
         execution: 
           onExecute:
             - pushd "$res_self_repo_resourcePath/"
-            - save_tests tests/results.xml
+            - save_tests tests
             - ls .
             - popd
             
