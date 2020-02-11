@@ -5,7 +5,7 @@ pipelines:
         type: Bash
         configuration:
           integrations:
-            - name: simple_mail
+            - name: simple_mails
         execution: 
           onExecute:
             - echo "Step 1"
