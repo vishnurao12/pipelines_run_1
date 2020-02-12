@@ -9,9 +9,6 @@ resources:
 
 pipelines:
   - name: First_Pipeline_Long_Pipeline_Name_Long
-    configuration:
-      runtime:
-        type: host
     steps:
       - name: First_Step
         type: Bash
