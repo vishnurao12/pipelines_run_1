@@ -6,6 +6,13 @@ resources:
       branches:
         include: ^master$
       gitProvider: nawaz_gh
+  - name: bbs_repo
+    type: GitRepo
+    configuration:
+      path: ~khazina/testing
+      branches:
+        include: ^master$
+      gitProvider: nawaz_bbs
 
 pipelines:
   - name: First_Pipeline_Long_Pipeline_Name_Long
