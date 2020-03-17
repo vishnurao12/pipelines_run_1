@@ -22,11 +22,10 @@ pipelines:
         configuration:
           inputResources:
             - name: self_repo
+            - name: bbs_repo
         execution: 
           onExecute:
             - pushd "$res_self_repo_resourcePath/"
-            - save_tests tests
-            - ls .
             - popd
             
       - name: Second_Step
