@@ -18,33 +18,7 @@ pipelines:
         execution: 
           onExecute:
             - pushd "$res_self_repo_resourcePath/"
+            - save_tests saveTests
+            - save_tests saveTests/empty
             - popd
-            
-      - name: Second_Step
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: First_Step
-        execution: 
-          onExecute:
-            - echo "Step 2"
-            
-      - name: Third_Step
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Second_Step
-        execution: 
-          onExecute:
-            - echo "Step 2"
-          
-      - name: Fourth_Step
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Third_Step
-        execution: 
-          onExecute:
-            - echo "Step 2"
-            
     
