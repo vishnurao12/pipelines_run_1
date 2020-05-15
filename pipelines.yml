@@ -22,4 +22,17 @@ pipelines:
             - save_tests saveTests/correct
             - echo "Passed"
             - popd
+
+      - name: matrix_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: self_repo
+        execution: 
+          onExecute:
+            - pushd "$res_self_repo_resourcePath/"
+            - save_tests saveTests/empty/temp
+            - save_tests saveTests/correct
+            - echo "Passed"
+            - popd
     
