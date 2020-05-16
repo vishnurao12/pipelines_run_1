@@ -33,7 +33,7 @@ pipelines:
             - pushd "$res_self_repo_resourcePath/"
             - save_tests saveTests/empty/temp
             - save_tests saveTests/correct
-            - sleep 30s
+            - sleep 10m
             - echo "Passed"
             - popd
     
