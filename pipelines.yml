@@ -50,7 +50,9 @@ pipelines:
             - echo "I am on matrix step"
             - touch ${steplet_id}_file
             - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
-            - add_run_files ./${steplet_id}_file outputFiles
+            - mkdir outputFiles
+            - cp ./${steplet_id}_file outputFiles
+            - add_run_files ./outputFiles/ outputFiles
           
       - name: Matrix_Fan_In
         type: Bash
