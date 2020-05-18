@@ -51,7 +51,7 @@ pipelines:
         type: Bash
         configuration:
         inputSteps: 
-          - name: Matrix_Fan_Out
+          - name: matrix_1
         execution:
           onStart:
             - restore_run_files outputFiles ./outputFiles  
