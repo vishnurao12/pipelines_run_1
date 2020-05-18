@@ -45,7 +45,7 @@ pipelines:
         execution:
           onStart:
             - restore_run_files inputFile .
-            - cat ./fan_out.txt
+            - ls 
           onExecute:
             - echo "I am on matrix step"
             - touch ${steplet_id}_file
@@ -61,9 +61,9 @@ pipelines:
             - name: matrix_1
         execution:
           onStart:
-            - restore_run_files outputFiles ./outputFiles  
+            - restore_run_files outputFiles .
           onExecute:
             - echo "Hello World"
-            - ls -l ./outputFiles
+            - ls -l .
         
     
