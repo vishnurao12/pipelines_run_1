@@ -51,8 +51,8 @@ pipelines:
             - touch ${steplet_id}_file
             - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
             - mkdir outputFiles
-            - cp ./${steplet_id}_file outputFiles
-            - add_run_files ./outputFiles/${steplet_id}_file outputFiles
+            - cp ./${steplet_id}_file files
+            - add_run_files ./files/ outputFiles
           
       - name: Matrix_Fan_In
         type: Bash
