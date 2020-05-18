@@ -24,7 +24,10 @@ pipelines:
             - popd
 
       - name: Matrix_Fan_Out
-        type: Bash            
+        type: Bash
+        configuration:
+          inputResources:
+            - name: self_repo            
         execution: 
           onExecute:
             - echo "I am on fan out step"
@@ -35,6 +38,8 @@ pipelines:
       - name: matrix_1
         type: Bash
         configuration:
+          inputResources:
+            - name: self_repo
           inputSteps: 
             - name: Matrix_Fan_Out
         execution:
@@ -50,6 +55,8 @@ pipelines:
       - name: Matrix_Fan_In
         type: Bash
         configuration:
+          inputResources:
+            - name: self_repo
           inputSteps: 
             - name: matrix_1
         execution:
