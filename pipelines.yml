@@ -42,6 +42,11 @@ pipelines:
             - name: self_repo
           inputSteps: 
             - name: Matrix_Fan_Out
+          matrix:
+            environmentVariables:
+              env1: 
+                - one
+                - two
         execution:
           onStart:
             - restore_run_files inputFile .
@@ -50,7 +55,7 @@ pipelines:
             - echo "I am on matrix step"
             - touch ${steplet_id}_file
             - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
-            - mkdir outputFiles
+            - mkdir files
             - cp ./${steplet_id}_file files
             - add_run_files ./files/ outputFiles
           
