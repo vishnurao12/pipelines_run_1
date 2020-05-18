@@ -61,9 +61,9 @@ pipelines:
             - name: matrix_1
         execution:
           onStart:
-            - restore_run_files outputFiles .
+            - restore_run_files outputFiles ./outputFiles
           onExecute:
             - echo "Hello World"
-            - ls -l .
+            - ls -l ./outputFiles
         
     
