@@ -8,9 +8,9 @@ resources:
       gitProvider: nawaz_gh
 
 pipelines:
-  - name: First_Pipeline_Long_Pipeline_Name_Long
+  - name: Pipeline
     steps:
-      - name: First_Step
+      - name: Normal_Step
         type: Bash
         configuration:
           inputResources:
