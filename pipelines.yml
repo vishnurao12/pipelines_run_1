@@ -80,5 +80,6 @@ pipelines:
           onExecute:
             - echo "Hello World"
             - ls -l ./outputFiles
+            - find ./outputFiles -type f -printf "\n%p\n" -exec cat {} \;
         
     
