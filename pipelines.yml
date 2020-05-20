@@ -53,6 +53,7 @@ pipelines:
               env3:
                 - five
                 - six
+                - seven
         execution:
           onStart:
             - restore_run_files inputFile .
