@@ -47,6 +47,12 @@ pipelines:
               env1: 
                 - one
                 - two
+              env2:
+                - three
+                - four
+              env3:
+                - five
+                - six
         execution:
           onStart:
             - restore_run_files inputFile .
