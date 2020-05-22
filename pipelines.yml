@@ -47,13 +47,19 @@ pipelines:
               env1: 
                 - one
                 - two
-              env2:
-                - three
-                - four
-              env3:
-                - five
-                - six
-                - seven
+            runtimes:
+              - image:
+                  auto:
+                    language: node
+                    versions:
+                      - 10.16.3
+              - image:
+                  auto:
+                    language: node
+                    versions:
+                      - 10.16.3
+              
+
         execution:
           onStart:
             - restore_run_files inputFile .
