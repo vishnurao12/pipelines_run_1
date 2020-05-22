@@ -48,12 +48,14 @@ pipelines:
                 - one
                 - two
             runtimes:
-              - image:
+              - type: image
+                image:
                   auto:
                     language: node
                     versions:
                       - 10.16.3
-              - image:
+              - type: image
+                image:
                   auto:
                     language: node
                     versions:
