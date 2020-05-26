@@ -47,7 +47,7 @@ pipelines:
               env1: 
                 - one
                 - two
-                
+
         execution:
           onStart:
             - restore_run_files inputFile .
@@ -76,5 +76,33 @@ pipelines:
             - echo "Hello World"
             - ls -l ./outputFiles
             - find ./outputFiles -type f -printf "\n%p\n" -exec cat {} \;
+
+      - name: matrix_2
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          inputResources:
+            - name: self_repo
+          inputSteps: 
+            - name: Matrix_Fan_Out
+          matrix:
+            environmentVariables:
+              env1: 
+                - one
+                - two
+
+        execution:
+          onStart:
+            - restore_run_files inputFile .
+            - ls 
+          onExecute:
+            - echo "I am on matrix step"
+            - touch ${steplet_id}_file
+            - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
+            - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
+            - echo "Runtime image name - $step_image_name, Runtime image tag - $step_image_tag" >> ${steplet_id}_file
+            - mkdir files
+            - cp ./${steplet_id}_file files
+            - add_run_files ./files/ outputFiles
         
     
