@@ -68,7 +68,7 @@ pipelines:
           inputResources:
             - name: self_repo
           inputSteps: 
-            - name: matrix_1
+            - name: matrix_2
         execution:
           onStart:
             - restore_run_files outputFiles ./outputFiles/.
