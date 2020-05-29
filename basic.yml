@@ -3,7 +3,6 @@ pipelines:
     steps:
       - name: First_Step
         type: Bash
-        configuration:
         execution: 
           onExecute:
             - echo "Step 1"
