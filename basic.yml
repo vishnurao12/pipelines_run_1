@@ -1,1 +1,36 @@
-
+pipelines:
+  - name: First_Pipeline_Long_Pipeline_Name_Long
+    steps:
+      - name: First_Step
+        type: Bash
+        configuration:
+        execution: 
+          onExecute:
+            - echo "Step 1"
+            
+      - name: Second_Step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: First_Step
+        execution: 
+          onExecute:
+            - echo "Step 2"
+            
+      - name: Third_Step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Second_Step
+        execution: 
+          onExecute:
+            - echo "Step 2"
+          
+      - name: Fourth_Step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Third_Step
+        execution: 
+          onExecute:
+            - echo "Step 2"
