@@ -87,7 +87,7 @@ pipelines:
             - ls 
           onExecute:
             - echo "I am on matrix step"
-            - ls -l ./Matrix_Fan_Out_1
+            - ls -l ./Matrix_Fan_Out_{1,2,3}
             - touch ${steplet_id}_file
             - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
             - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
@@ -108,6 +108,5 @@ pipelines:
             - echo "Hello World"
             - ls -l .
             - ls -l ./matrix
-            - find ./matrix -type f -printf "\n%p\n" -exec cat {} \;
         
     
