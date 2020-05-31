@@ -26,6 +26,8 @@ pipelines:
       - name: Matrix_Fan_Out_1
         type: FanOut
         configuration:
+          inputSteps: 
+            - name: Normal_Step
           inputResources:
             - name: self_repo            
         execution: 
@@ -38,6 +40,8 @@ pipelines:
       - name: Matrix_Fan_Out_2
         type: FanOut
         configuration:
+          inputSteps: 
+            - name: Normal_Step
           inputResources:
             - name: self_repo            
         execution: 
@@ -50,6 +54,8 @@ pipelines:
       - name: Matrix_Fan_Out_3
         type: FanOut
         configuration:
+          inputSteps: 
+            - name: Normal_Step
           inputResources:
             - name: self_repo            
         execution: 
