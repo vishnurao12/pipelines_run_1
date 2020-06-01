@@ -27,9 +27,7 @@ pipelines:
         type: FanOut
         configuration:
           inputSteps: 
-            - name: Normal_Step
-          inputResources:
-            - name: self_repo            
+            - name: Normal_Step      
         execution: 
           onExecute:
             - echo "I am on fan out step"
@@ -42,9 +40,7 @@ pipelines:
         type: FanOut
         configuration:
           inputSteps: 
-            - name: Normal_Step
-          inputResources:
-            - name: self_repo            
+            - name: Normal_Step       
         execution: 
           onExecute:
             - echo "I am on fan out step"
@@ -57,9 +53,7 @@ pipelines:
         type: FanOut
         configuration:
           inputSteps: 
-            - name: Normal_Step
-          inputResources:
-            - name: self_repo            
+            - name: Normal_Step        
         execution: 
           onExecute:
             - echo "I am on fan out step"
@@ -72,8 +66,6 @@ pipelines:
         type: Matrix
         stepMode: Bash
         configuration:
-          inputResources:
-            - name: self_repo
           inputSteps: 
             - name: Matrix_Fan_Out_1
             - name: Matrix_Fan_Out_2
@@ -106,8 +98,6 @@ pipelines:
       - name: Matrix_Fan_In
         type: FanIn
         configuration:
-          inputResources:
-            - name: self_repo
           inputSteps: 
             - name: matrix
         execution:
