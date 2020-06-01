@@ -90,6 +90,7 @@ pipelines:
             - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
             - echo "Runtime image name - $step_image_name, Runtime image tag - $step_image_tag" >> ${steplet_id}_file
             - set_step_var test_key "$(date)"
+            - set_step_var addresses "https://www.google.com/${steplet_id}"
             - get_step_var Matrix_Fan_Out_1 fan_out
             - get_step_var Matrix_Fan_Out_2 fan_out
             - get_step_var Matrix_Fan_Out_3 fan_out
@@ -108,5 +109,6 @@ pipelines:
             - ls -l .
             - ls -l ./matrix
             - get_step_var matrix test_key
+            - get_step_var matrix addresses
         
     
