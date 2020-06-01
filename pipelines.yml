@@ -62,7 +62,7 @@ pipelines:
             - echo "Fan out working" > fan_out_3.txt
             - ls -l .
 
-      - name: matrix
+      - name: matrix_1
         type: Matrix
         stepMode: Bash
         configuration:
@@ -90,17 +90,52 @@ pipelines:
             - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
             - echo "Runtime image name - $step_image_name, Runtime image tag - $step_image_tag" >> ${steplet_id}_file
             - set_step_var test_key "$(date)"
-            - set_step_var addresses "https://www.google.com/${steplet_id}"
+            - set_step_var addresses "https://www.google.com/${env1}/${steplet_id}"
             - get_step_var Matrix_Fan_Out_1 fan_out
             - get_step_var Matrix_Fan_Out_2 fan_out
             - get_step_var Matrix_Fan_Out_3 fan_out
             - ls -l .
-            
+
+      - name: matrix_2
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          inputSteps: 
+            - name: Matrix_Fan_Out_1
+            - name: Matrix_Fan_Out_2
+            - name: Matrix_Fan_Out_3
+          matrix:
+            environmentVariables:
+              env1: 
+                - one
+                - two
+                - three
+                - four
+
+        execution:
+          onStart:
+            - restore_run_files inputFile .
+            - ls 
+          onExecute:
+            - echo "I am on matrix step"
+            - ls -l ./Matrix_Fan_Out_{1,2,3}
+            - touch ${steplet_id}_file
+            - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
+            - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
+            - echo "Runtime image name - $step_image_name, Runtime image tag - $step_image_tag" >> ${steplet_id}_file
+            - set_step_var test_key "$(date)"
+            - set_step_var addresses "https://www.google.com/${env1}/${steplet_id}"
+            - get_step_var Matrix_Fan_Out_1 fan_out
+            - get_step_var Matrix_Fan_Out_2 fan_out
+            - get_step_var Matrix_Fan_Out_3 fan_out
+            - ls -l .
+      
       - name: Matrix_Fan_In
         type: FanIn
         configuration:
           inputSteps: 
-            - name: matrix
+            - name: matrix_1
+            - name: matrix_2
         execution:
           onStart:
             - restore_run_files outputFiles ./outputFiles/.
@@ -108,7 +143,9 @@ pipelines:
             - echo "Hello World"
             - ls -l .
             - ls -l ./matrix
-            - get_step_var matrix test_key
-            - get_step_var matrix addresses
+            - get_step_var matrix_1 test_key
+            - get_step_var matrix_1 addresses
+            - get_step_var matrix_2 test_key
+            - get_step_var matrix_2 addresses
         
     
