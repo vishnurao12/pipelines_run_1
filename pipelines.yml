@@ -111,6 +111,14 @@ pipelines:
                 - two
                 - three
                 - four
+        matrix:
+          environmentVariables:
+            - env1: one
+              env2: two
+              env3: three
+            - env1: a
+              env2: b
+              env3: c
 
         execution:
           onStart:
