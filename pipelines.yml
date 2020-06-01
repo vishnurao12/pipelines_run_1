@@ -142,7 +142,7 @@ pipelines:
           onExecute:
             - echo "Hello World"
             - ls -l .
-            - ls -l ./matrix
+            - ls -l ./matrix_{1,2}
             - get_step_var matrix_1 test_key
             - get_step_var matrix_1 addresses
             - get_step_var matrix_2 test_key
