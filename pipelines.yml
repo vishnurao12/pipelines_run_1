@@ -125,7 +125,7 @@ pipelines:
                 auto:
                   language: node
                   versions:
-                    - 10.18.0
+                    - 12.14.0
             - type: image
               image:
                 auto:
