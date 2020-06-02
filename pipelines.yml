@@ -116,18 +116,9 @@ pipelines:
             - env1: one
               env2: two
               env3: three
-            - env1: a
-              env2: b
-              env3: c
-            - env1: first
-              env2: second
-              env3: third
-            - env1: a
-              env2: b
-              env3: c
-            - env1: first
-              env2: second
-              env3: third
+            - env1: changed1
+              env2: changed2
+              env3: changed3
 
         execution:
           onStart:
