@@ -119,6 +119,31 @@ pipelines:
             - env1: changed1
               env2: changed2
               env3: changed3
+          runtimes:
+            - type: image
+              image:
+                auto:
+                  language: node
+                  versions:
+                    - 10.18.0
+            - type: image
+              image:
+                auto:
+                  language: node
+                  versions:
+                    - 8.17.0 
+            - type: image
+              image:
+                auto:
+                  language: node
+                  versions:
+                    - 10.18.0
+            - type: image
+              image:
+                auto:
+                  language: node
+                  versions:
+                    - 8.17.0
 
         execution:
           onStart:
