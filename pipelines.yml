@@ -135,5 +135,14 @@ pipelines:
             - ls -l ./matrix_2/Matrix_Fan_Out_1/Normal_Step
             - get_step_var matrix_2 test_key
             - get_step_var matrix_2 addresses
-        
+              
+      - name: ResourceTriggered
+        type: Bash
+        configuration:
+          inputResources: 
+            - name: matrix_property_bag_out
+        execution:
+          onExecute:
+            - get_step_var matrix_2 test_key
+            - get_step_var matrix_2 addresses        
     
