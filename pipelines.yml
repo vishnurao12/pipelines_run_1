@@ -7,11 +7,16 @@ resources:
         include: ^master$
       gitProvider: nawaz_gh
 
-  - name: matrix_property_bag
+  - name: matrix_property_bag_in
     type: PropertyBag
     configuration:
       key1: value1
       key2: value2
+
+  - name: matrix_property_bag_out
+    type: PropertyBag
+    configuration:
+      key1: value1
 
 pipelines:
   - name: Pipeline
@@ -50,9 +55,9 @@ pipelines:
             - name: Matrix_Fan_Out_1
           inputResources:
             - name: self_repo
-            - name: matrix_property_bag
+            - name: matrix_property_bag_in
           outputResources:
-            - name: matrix_property_bag
+            - name: matrix_property_bag_out
           matrix:
             environmentVariables:
               env1: 
@@ -108,7 +113,7 @@ pipelines:
             - get_step_var Matrix_Fan_Out_1 fan_out
             - get_step_var Matrix_Fan_Out_2 fan_out
             - get_step_var Matrix_Fan_Out_3 fan_out
-            - write_output matrix_property_bag "${steplet_id}_env1"="$env1"
+            - write_output matrix_property_bag_out "${steplet_id}_env1"="$env1"
             - pushd "$res_self_repo_resourcePath/"
             - save_tests saveTests/empty/temp
             - save_tests saveTests/correct
