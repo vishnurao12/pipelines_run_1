@@ -45,7 +45,6 @@ pipelines:
             - touch fan_out.txt
             - set_step_var fan_out value1
             - echo "Fan out working" > fan_out_1.txt
-            - ls -l ./Normal_Step/
 
       - name: matrix_2
         type: Matrix
@@ -73,6 +72,8 @@ pipelines:
             - env1: changed1
               env2: changed2
               env3: changed3
+            - env1: testing
+              env2: testing2
           runtimes:
             - type: image
               image:
@@ -103,7 +104,6 @@ pipelines:
           onExecute:
             - echo "I am on matrix step"
             - ls -l ./Matrix_Fan_Out_1
-            - ls -l ./Matrix_Fan_Out_1/Normal_Step
             - touch ${steplet_id}_file
             - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
             - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
@@ -113,7 +113,7 @@ pipelines:
             - get_step_var Matrix_Fan_Out_1 fan_out
             - get_step_var Matrix_Fan_Out_2 fan_out
             - get_step_var Matrix_Fan_Out_3 fan_out
-            - write_output matrix_property_bag_out "${steplet_id}_env1"="$env1"
+            - write_output matrix_property_bag_out "env1"="$env1"
             - pushd "$res_self_repo_resourcePath/"
             - save_tests saveTests/empty/temp
             - save_tests saveTests/correct
@@ -132,7 +132,6 @@ pipelines:
             - ls -l .
             - ls -l ./matrix_2
             - ls -l ./matrix_2/Matrix_Fan_Out_1/
-            - ls -l ./matrix_2/Matrix_Fan_Out_1/Normal_Step
             - get_step_var matrix_2 test_key
             - get_step_var matrix_2 addresses
               

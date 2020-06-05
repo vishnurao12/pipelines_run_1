@@ -36,3 +36,6 @@ purge_queue() {
   VHOST_NAME="${CUSTOMER}_pipelinesRoot"
   curl -i -u "$RABBITMQ_ADMIN_USER:$RABBITMQ_ADMIN_PASSWORD" -XDELETE "https://$RABBITMQ_ADMIN_URL/api/queues/$VHOST_NAME/$QUEUE_NAME/contents"
 }
+
+
+deletePipelineById for id: 28 returned error: deletePipelineStepById for id: 107 returned error: pipelineSteps.destroy failed for id: 107 returned error: update or delete on table "pipelineSteps" violates foreign key constraint "pipelineSteplets_pipelineStepId_fkey" on table "pipelineSteplets"
