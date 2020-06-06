@@ -71,21 +71,37 @@ pipelines:
               env3: three
             - env1: changed1
               env2: changed2
-            - key1: value1
-              key2: value2
+            - key_1: value1
+              key_2: value2
+            - key_1: value3
+              key_2: value4
+            - key_1: value5
+              key_2: value6
           runtimes:
             - type: image
               image:
                 auto:
-                  language: node
+                  language: cpp
                   versions:
-                    - 12.14.0
+                    - 8.0.0
+            - type: image
+              image:
+                auto:
+                  language: go
+                  versions:
+                    - 1.13 
+            - type: image
+              image:
+                auto:
+                  language: java
+                  versions:
+                    - 13.0
             - type: image
               image:
                 auto:
                   language: node
                   versions:
-                    - 8.17.0 
+                    - 8.17.0
             - type: image
               image:
                 auto:
@@ -97,7 +113,7 @@ pipelines:
                 auto:
                   language: node
                   versions:
-                    - 8.17.0
+                    - 12.14.0
 
         execution:
           onExecute:
@@ -118,6 +134,10 @@ pipelines:
             - save_tests saveTests/correct
             - echo "Passed"
             - popd
+            - |
+              if [[ "$key_1" == "value1" ]]; then
+                exit 1;
+              fi
             - ls -l .
       
       - name: Matrix_Fan_In
