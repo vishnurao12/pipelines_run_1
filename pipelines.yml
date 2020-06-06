@@ -71,8 +71,6 @@ pipelines:
               env3: three
             - env1: changed1
               env2: changed2
-            - key1: value1
-              key2: value2
           runtimes:
             - type: image
               image:
