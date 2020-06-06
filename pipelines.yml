@@ -71,34 +71,33 @@ pipelines:
               env3: three
             - env1: changed1
               env2: changed2
-            - key1: value1
-              key2: value2
+            - key_1: value1
+              key_2: value2
           runtimes:
             - type: image
               image:
                 auto:
-                  language: node
+                  language: cpp
                   versions:
-                    - 12.14.0
+                    - 8.0.0
             - type: image
               image:
                 auto:
-                  language: node
+                  language: go
                   versions:
-                    - 8.17.0 
+                    - 1.1.13 
             - type: image
               image:
                 auto:
-                  language: node
+                  language: java
                   versions:
-                    - 10.18.0
+                    - 13.0
             - type: image
               image:
                 auto:
                   language: node
                   versions:
                     - 8.17.0
-
         execution:
           onExecute:
             - echo "I am on matrix step"
