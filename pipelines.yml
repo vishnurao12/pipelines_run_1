@@ -42,16 +42,29 @@ pipelines:
         execution: 
           onExecute:
             - echo "I am on fan out step"
-            - touch fan_out.txt
+            - touch fan_out_1.txt
             - set_step_var fan_out value1
             - echo "Fan out working" > fan_out_1.txt
-
+            
+      - name: Matrix_Fan_Out_2
+        type: FanOut
+        configuration:
+          inputSteps: 
+            - name: Normal_Step      
+        execution: 
+          onExecute:
+            - echo "I am on fan out step "
+            - touch fan_out_2.txt
+            - set_step_var fan_out value1
+            - echo "Fan out working" > fan_out_2.txt
+            
       - name: matrix_2
         type: Matrix
         stepMode: Bash
         configuration:
           inputSteps: 
             - name: Matrix_Fan_Out_1
+            - name: Matrix_Fan_Out_2
           inputResources:
             - name: self_repo
         matrix:
