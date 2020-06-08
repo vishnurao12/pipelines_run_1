@@ -54,38 +54,16 @@ pipelines:
             - name: Matrix_Fan_Out_1
           inputResources:
             - name: self_repo
-            - name: matrix_property_bag_in
-          outputResources:
-            - name: matrix_property_bag_out
-          matrix:
-            environmentVariables:
-              env1: 
-                - one
-                - two
-                - three
-                - four
         matrix:
-          environmentVariables:
-            - env1: one
-              env2: two
-              env3: three
-            - env1: changed1
-              env2: changed2
-            - key_1: value1
-              key_2: value2
+          # environmentVariables:
+          #   - env1: one
+          #     env2: two
+          #     env3: three
+          #   - env1: changed1
+          #     env2: changed2
+          #   - key_1: value1
+          #     key_2: value2
           runtimes:
-            - type: image
-              image:
-                auto:
-                  language: cpp
-                  versions:
-                    - 8.0.0
-            - type: image
-              image:
-                auto:
-                  language: go
-                  versions:
-                    - 1.1.13 
             - type: image
               image:
                 auto:
@@ -104,18 +82,15 @@ pipelines:
             - ls -l ./Matrix_Fan_Out_1
             - touch ${steplet_id}_file
             - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
-            - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
+            # - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
             - echo "Runtime image name - $step_image_name, Runtime image tag - $step_image_tag" >> ${steplet_id}_file
             - set_step_var test_key "$(date)"
             - set_step_var addresses "https://www.google.com/${env1}/${steplet_id}"
             - get_step_var Matrix_Fan_Out_1 fan_out
-            - get_step_var Matrix_Fan_Out_2 fan_out
-            - get_step_var Matrix_Fan_Out_3 fan_out
-            - write_output matrix_property_bag_out "env1"="$env1"
             - pushd "$res_self_repo_resourcePath/"
-            - save_tests saveTests/empty/temp
-            - save_tests saveTests/correct
-            - echo "Passed"
+            # - save_tests saveTests/empty/temp
+            # - save_tests saveTests/correct
+            # - echo "Passed"
             - popd
             - ls -l .
       
@@ -131,15 +106,5 @@ pipelines:
             - ls -l ./matrix_2
             - ls -l ./matrix_2/Matrix_Fan_Out_1/
             - get_step_var matrix_2 test_key
-            - get_step_var matrix_2 addresses
-              
-      - name: ResourceTriggered
-        type: Bash
-        configuration:
-          inputResources: 
-            - name: matrix_property_bag_out
-        execution:
-          onExecute:
-            - get_step_var matrix_2 test_key
-            - get_step_var matrix_2 addresses        
+            - get_step_var matrix_2 addresses     
     
