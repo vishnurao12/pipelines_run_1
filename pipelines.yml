@@ -41,6 +41,7 @@ pipelines:
             - name: Normal_Step      
         execution: 
           onExecute:
+            - sleep 10s
             - echo "I am on fan out step"
             - touch fan_out_1.txt
             - set_step_var fan_out value1
@@ -53,6 +54,7 @@ pipelines:
             - name: Normal_Step      
         execution: 
           onExecute:
+            - sleep 10s
             - echo "I am on fan out step "
             - touch fan_out_2.txt
             - set_step_var fan_out value1
@@ -74,6 +76,15 @@ pipelines:
               env3: three
             - env1: changed1
               env2: changed2
+            - env1: changed12
+              env2: changed23
+            - env1: one1
+              env2: two2
+              env3: three3
+            - env1: changed14
+              env2: changed25
+            - env1: changed126
+              env2: changed237
             # - key_1: value1
             #   key_2: value2
           # runtimes:
