@@ -102,8 +102,8 @@ pipelines:
             # - pushd "$res_self_repo_resourcePath/"
             # - save_tests saveTests/empty/temp
             # - save_tests saveTests/correct
-            - echo "Passed"
-            - popd
+            # - echo "Passed"
+            # - popd
             - ls -l .
       
       - name: Matrix_Fan_In
