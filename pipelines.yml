@@ -84,36 +84,36 @@ pipelines:
                   language: cpp
                   versions:
                     - 8.0.0
-            - type: image
-              image:
-                auto:
-                  language: go
-                  versions:
-                    - 1.13 
-            - type: image
-              image:
-                auto:
-                  language: java
-                  versions:
-                    - 13.0
-            - type: image
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 8.17.0
-            - type: image
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 10.18.0
-            - type: image
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 12.14.0
+            # - type: image
+            #   image:
+            #     auto:
+            #       language: go
+            #       versions:
+            #         - 1.13 
+            # - type: image
+            #   image:
+            #     auto:
+            #       language: java
+            #       versions:
+            #         - 13.0
+            # - type: image
+            #   image:
+            #     auto:
+            #       language: node
+            #       versions:
+            #         - 8.17.0
+            # - type: image
+            #   image:
+            #     auto:
+            #       language: node
+            #       versions:
+            #         - 10.18.0
+            # - type: image
+            #   image:
+            #     auto:
+            #       language: node
+            #       versions:
+            #         - 12.14.0
 
         execution:
           onExecute:
@@ -134,10 +134,6 @@ pipelines:
             - save_tests saveTests/correct
             - echo "Passed"
             - popd
-            - |
-              if [[ "$key_1" == "value1" ]]; then
-                exit 1;
-              fi
             - ls -l .
       
       - name: Matrix_Fan_In
