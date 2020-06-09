@@ -34,6 +34,7 @@ pipelines:
             - save_tests saveTests/empty/temp
             - save_tests saveTests/correct
             - echo "Passed"
+            - echo "$int_gen_K"
             - popd
 
       - name: Matrix_Fan_Out_1
@@ -49,6 +50,7 @@ pipelines:
             - touch fan_out.txt
             - set_step_var fan_out value1
             - echo "Fan out working" > fan_out_1.txt
+            - echo "$int_gen_K"
 
       - name: matrix_2
         type: Matrix
@@ -123,6 +125,7 @@ pipelines:
 
         execution:
           onExecute:
+            - echo "$int_gen_K"
             - echo "I am on matrix step"
             - ls -l ./Matrix_Fan_Out_1
             - touch ${steplet_id}_file
@@ -155,6 +158,7 @@ pipelines:
             - ls -l .
             - ls -l ./matrix_2
             - ls -l ./matrix_2/Matrix_Fan_Out_1/
+            - echo "$int_gen_K"
             - get_step_var matrix_2 test_key
             - get_step_var matrix_2 addresses
               
