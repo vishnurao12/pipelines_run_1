@@ -24,6 +24,8 @@ pipelines:
       - name: Normal_Step
         type: Bash
         configuration:
+          integrations:
+            - name: gen
           inputResources:
             - name: self_repo
         execution: 
@@ -37,6 +39,8 @@ pipelines:
       - name: Matrix_Fan_Out_1
         type: FanOut
         configuration:
+          integrations:
+            - name: gen
           inputSteps: 
             - name: Normal_Step      
         execution: 
@@ -50,6 +54,8 @@ pipelines:
         type: Matrix
         stepMode: Bash
         configuration:
+          integrations:
+            - name: gen
           inputSteps: 
             - name: Matrix_Fan_Out_1
           inputResources:
@@ -139,6 +145,8 @@ pipelines:
       - name: Matrix_Fan_In
         type: FanIn
         configuration:
+          integrations:
+            - name: gen
           inputSteps: 
             - name: matrix_2
         execution:
@@ -153,6 +161,8 @@ pipelines:
       - name: ResourceTriggered
         type: Bash
         configuration:
+          integrations:
+            - name: gen
           inputResources: 
             - name: matrix_property_bag_out
         execution:
