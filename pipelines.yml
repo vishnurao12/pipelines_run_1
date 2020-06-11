@@ -4,7 +4,7 @@ resources:
     configuration:
       path: Khazinawaz/pipelines_run_1
       branches:
-        include: ^master$
+        include: ^tests-failing$
       gitProvider: nawaz_gh
 
   - name: matrix_property_bag_in
