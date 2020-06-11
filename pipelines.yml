@@ -69,7 +69,7 @@ pipelines:
             - name: Matrix_Fan_Out_2
           inputResources:
             - name: self_repo
-        matrix:
+        stepletMultipliers:
           environmentVariables:
             - env1: one
               env2: two
