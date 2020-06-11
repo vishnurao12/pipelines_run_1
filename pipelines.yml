@@ -68,14 +68,7 @@ pipelines:
             - name: matrix_property_bag_in
           outputResources:
             - name: matrix_property_bag_out
-          matrix:
-            environmentVariables:
-              env1: 
-                - one
-                - two
-                - three
-                - four
-        matrix:
+        stepletMultipliers:
           environmentVariables:
             - env1: one
               env2: two
