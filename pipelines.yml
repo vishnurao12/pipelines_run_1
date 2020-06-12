@@ -73,7 +73,7 @@ pipelines:
               [ $fail == 'false' ] 
             - ls -l .
 
-        fastFail: true
+        fastFail: false
 
       - name: Matrix_Fan_In
         type: FanIn
