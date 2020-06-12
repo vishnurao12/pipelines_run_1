@@ -74,9 +74,9 @@ pipelines:
             - ls -l .
 
         fastFail: true
-        
+
         allowFailures:
-          environmentVariables:
+          - environmentVariables:
             - delay: 1
               fail: 'true'
 
