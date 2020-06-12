@@ -77,7 +77,7 @@ pipelines:
 
         allowFailures:
           - environmentVariables:
-            - delay: 1
+              delay: 1
               fail: 'true'
 
       - name: Matrix_Fan_In
