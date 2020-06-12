@@ -79,6 +79,11 @@ pipelines:
           - environmentVariables:
               delay: 1
               fail: 'true'
+              
+        exclude:
+          - environmentVariables:
+              delay: 10
+              fail: 'true'
 
       - name: Matrix_Fan_In
         type: FanIn
