@@ -70,7 +70,7 @@ pipelines:
           onExecute:
             - echo "I am on matrix step"
             - |
-              [ $fail == 'true' ] 
+              [ $fail == 'false' ] 
             - ls -l .
 
         fastFail: true
