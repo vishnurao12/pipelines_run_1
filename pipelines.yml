@@ -56,42 +56,25 @@ pipelines:
             - name: self_repo
         stepletMultipliers:
           environmentVariables:
-            - env1: one
-              env2: two
-              env3: three
-            - env1: changed1
-              env2: changed2
-          runtimes:
-            - type: image
-              image:
-                auto:
-                  language: java
-                  versions:
-                    - 13.0
-            - type: image
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 8.17.0
+            - delay: 5
+              fail: 'true'
+            - delay: 10
+              fail: 'false'
+            - delay: 15
+              fail: 'false'
+            - delay: 20
+              fail: 'false' 
         execution:
+          onStart:
+            - sleep "$delay"
           onExecute:
             - echo "I am on matrix step"
-            - ls -l ./Matrix_Fan_Out_1
-            - touch ${steplet_id}_file
-            - echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file
-            - echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >> ${steplet_id}_file
-            - echo "Runtime image name - $step_image_name, Runtime image tag - $step_image_tag" >> ${steplet_id}_file
-            - set_step_var test_key "$(date)"
-            - set_step_var addresses "https://www.google.com/${env1}/${steplet_id}"
-            - get_step_var Matrix_Fan_Out_1 fan_out
-            - pushd "$res_self_repo_resourcePath/"
-            - save_tests saveTests/empty/temp
-            - save_tests saveTests/correct
-            - echo "Passed"
-            - popd
+            - |
+              [ $fail == 'true' ] 
             - ls -l .
-      
+
+        fastFail: true
+
       - name: Matrix_Fan_In
         type: FanIn
         configuration:
