@@ -74,6 +74,11 @@ pipelines:
             - ls -l .
 
         fastFail: true
+        
+        allowFailures:
+          environmentVariables:
+            - delay: 1
+              fail: 'true'
 
       - name: Matrix_Fan_In
         type: FanIn
