@@ -1,101 +1,40 @@
-resources:
-  - name: self_repo
-    type: GitRepo
-    configuration:
-      path: Khazinawaz/pipelines_run_1
-      branches:
-        include: ^master$
-      gitProvider: nawaz_gh
-
-  - name: matrix_property_bag_in
-    type: PropertyBag
-    configuration:
-      key1: value1
-      key2: value2
-
-  - name: matrix_property_bag_out
-    type: PropertyBag
-    configuration:
-      key1: value1
-
 pipelines:
-  - name: Pipeline
+  - name: Pipeline_3
+    configuration:
+      environmentVariables:
+        readOnly:
+          ENV1: value1
+          ENV2: value2
     steps:
-      - name: Normal_Step
+      - name: Simple_Bash_1
         type: Bash
-        configuration:
-          inputResources:
-            - name: self_repo
-        execution: 
-          onExecute:
-            - pushd "$res_self_repo_resourcePath/"
-            - save_tests saveTests/empty/temp
-            - save_tests saveTests/correct
-            - echo "Passed"
-            - popd
-
-      - name: Matrix_Fan_Out_1
-        type: FanOut
-        configuration:
-          inputSteps: 
-            - name: Normal_Step      
-        execution: 
-          onExecute:
-            - echo "I am on fan out step"
-            - touch fan_out.txt
-            - set_step_var fan_out value1
-            - echo "Fan out working" > fan_out_1.txt
-
-      - name: matrix_2
-        type: Matrix
-        stepMode: Bash
-        configuration:
-          inputSteps: 
-            - name: Matrix_Fan_Out_1
-          inputResources:
-            - name: self_repo
-        stepletMultipliers:
-          environmentVariables:
-            - delay: 1
-              fail: 'true'
-            - delay: 10
-              fail: 'true'
-            - delay: 15
-              fail: 'false'
-            - delay: 20
-              fail: 'false' 
         execution:
           onStart:
-            - sleep "$delay"
+            - add_run_variables "key1=value1"
           onExecute:
-            - echo "I am on matrix step"
-            - |
-              [ $fail == 'false' ] 
-            - ls -l .
+            - echo "$key1"
 
-        fastFail: true
-
-        allowFailures:
-          - environmentVariables:
-              delay: 1
-              fail: 'true'
-              
-        exclude:
-          - environmentVariables:
-              delay: 10
-              fail: 'true'
-
-      - name: Matrix_Fan_In
-        type: FanIn
+      - name: Simple_Bash_2
+        type: Bash
         configuration:
-          inputSteps: 
-            - name: matrix_2
+          inputSteps:
+            - name: Simple_Bash_1
         execution:
+          onStart:
+            - add_run_variables "key2=value1"
           onExecute:
-            - echo "Hello World"
-            - ls -l .
-            - ls -l ./matrix_2
-            - ls -l ./matrix_2/Matrix_Fan_Out_1/
-            - get_step_var matrix_2 test_key
-            - get_step_var matrix_2 addresses
- 
+            - echo "$key1"
+            - echo "$key2"
+
+      - name: Simple_Bash_3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Simple_Bash_2
+        execution:
+          onStart:
+            - add_run_variables "key3=value1"
+          onExecute:
+            - echo "$key1"
+            - echo "$key2"
+            - echo "$key3"
