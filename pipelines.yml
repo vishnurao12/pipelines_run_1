@@ -11,6 +11,7 @@ pipelines:
         execution:
           onStart:
             - add_run_variables "key1=value1"
+            - add_pipeline_variables "bash1_${steplet_id}_pipeline_1=${steplet_id}"
           onExecute:
             - echo "$key1"
             - echo "$run_number"
@@ -24,6 +25,7 @@ pipelines:
         execution:
           onStart:
             - add_run_variables "key2=value2"
+            - add_pipeline_variables "bash2_${steplet_id}_pipeline_1=${steplet_id}"
           onExecute:
             - echo "$key1"
             - echo "$key2"
@@ -38,6 +40,7 @@ pipelines:
         execution:
           onStart:
             - add_run_variables "key3=value3"
+            - add_pipeline_variables "bash3_${steplet_id}_pipeline_1=${steplet_id}"
           onExecute:
             - echo "$key1"
             - echo "$key2"
