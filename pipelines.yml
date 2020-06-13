@@ -55,7 +55,7 @@ resources:
       gitProvider: nawaz_gh
       path: Khazinawaz/project-examples
       branches:
-        include: master
+        include: ^master$
  
       
 pipelines:          
