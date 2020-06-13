@@ -1,49 +1,113 @@
-pipelines:
-  - name: Pipeline_3
+resources:
+  - name: ranjan_go_build_publish
+    type: BuildInfo
     configuration:
-      environmentVariables:
-        readOnly:
-          ENV1: value1
-          ENV2: value2
+      sourceArtifactory: s_artifactory
+      buildName: go_example_build_publish
+      buildNumber: 32
+      
+  - name: ranjan_artifactory_go_module_example
+    type: GitRepo
+    configuration:
+      path: Khazinawaz/artifactory-go-example
+      branches:
+        include: master
+      gitProvider: nawaz_gh
+      
+  - name: go_build_info_publish_moduletestss
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: s_artifactory
+      buildName: go_example_module_publish
+      buildNumber: 332
+      
+  - name: promoted_go_build_info_go_publishtestss
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: s_artifactory
+      buildName: promote_go_build_info_publish
+      buildNumber: 35
+      
+  - name: artifactory_go_exampletestss
+    type: GitRepo
+    configuration:
+      path: Khazinawaz/project-examples
+      branches:
+        include: master
+      gitProvider: nawaz_gh
+      
+pipelines:      
+  - name: ranjna_goBuildtest
+#     configuration:
+#       nodePool: win_2019
     steps:
-      - name: Simple_Bash_1
-        type: Bash
+      - name: build_gotest
+        type: GoBuild
+        configuration:
+          sourceLocation: golang-example/hello
+          repository: test-go-local
+          outputLocation: /tmp/dist
+          outputFile: hello
+          inputResources:
+            - name: artifactory_go_exampletestss
+          integrations:
+            - name: s_artifactory
         execution:
           onStart:
-            - add_run_variables "key1=value1"
-            - add_pipeline_variables "bash1_${steplet_id}_pipeline_1=${steplet_id}"
-          onExecute:
-            - echo "$key1"
-            - echo "$run_number"
-            - printenv
-
-      - name: Simple_Bash_2
-        type: Bash
+            - go version
+            
+      - name: publish_go_binarytest
+        type: GoPublishBinary
         configuration:
           inputSteps:
-            - name: Simple_Bash_1
-        execution:
-          onStart:
-            - add_run_variables "key2=value2"
-            - add_pipeline_variables "bash2_${steplet_id}_pipeline_1=${steplet_id}"
-          onExecute:
-            - echo "$key1"
-            - echo "$key2"
-            - echo "Run number - $run_number"
-            - printenv
-
-      - name: Simple_Bash_3
-        type: Bash
+            - name: build_gotest
+          targetRepository: test-go-local
+          integrations:
+            - name: s_artifactory
+            
+      - name: publish_buildtest
+        type: PublishBuildInfo
         configuration:
           inputSteps:
-            - name: Simple_Bash_2
+            - name: publish_go_binarytest
+          outputResources:
+            - name: ranjan_go_build_publish
+            
+      - name: publish_go_moduletest
+        type: GoPublishModule
         execution:
           onStart:
-            - add_run_variables "key3=value3"
-            - add_pipeline_variables "bash3_${steplet_id}_pipeline_1=${steplet_id}"
-          onExecute:
-            - echo "$key1"
-            - echo "$key2"
-            - echo "$key3"
-            - echo "Run number - $run_number"
-            - printenv
+            - go version
+        configuration:
+          sourceLocation: .
+          version: v0.0.0
+          targetRepository: test-go-local
+          autoPublishBuildInfo: true
+          integrations:
+            - name: s_artifactory
+          inputResources:
+            - name: ranjan_artifactory_go_module_example
+          outputResources:
+            - name: go_build_info_publish_moduletestss
+            
+      - name: promote_build_gotest_binary
+        type: PromoteBuild
+        configuration:
+          targetRepository: test-generic-local
+          integrations:
+            - name: s_artifactory
+          inputResources:
+            - name: ranjan_go_build_publish
+          outputResources:
+            - name: promoted_go_build_info_go_publishtestss
+
+      - name: promote_build_gotest_module
+        type: PromoteBuild
+        configuration:
+          targetRepository: test-generic-local
+          integrations:
+            - name: s_artifactory
+          inputResources:
+            - name: go_build_info_publish_moduletestss
+          outputResources:
+            - name: promoted_go_build_info_go_publishtestss  
