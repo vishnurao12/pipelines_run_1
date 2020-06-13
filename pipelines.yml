@@ -13,6 +13,7 @@ pipelines:
             - add_run_variables "key1=value1"
           onExecute:
             - echo "$key1"
+            - echo "$run_rumber"
 
       - name: Simple_Bash_2
         type: Bash
@@ -21,10 +22,11 @@ pipelines:
             - name: Simple_Bash_1
         execution:
           onStart:
-            - add_run_variables "key2=value1"
+            - add_run_variables "key2=value2"
           onExecute:
             - echo "$key1"
             - echo "$key2"
+            - echo "Run number - $run_rumber"
 
       - name: Simple_Bash_3
         type: Bash
@@ -33,7 +35,7 @@ pipelines:
             - name: Simple_Bash_2
         execution:
           onStart:
-            - add_run_variables "key3=value1"
+            - add_run_variables "key3=value3"
           onExecute:
             - echo "$key1"
             - echo "$key2"
