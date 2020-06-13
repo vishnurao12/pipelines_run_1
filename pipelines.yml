@@ -52,7 +52,7 @@ resources:
   - name: mvn_repo04
     type: GitRepo
     configuration:
-      gitProvider: ranjan_github
+      gitProvider: nawaz_gh
       path: Khazinawaz/project-examples
  
       
