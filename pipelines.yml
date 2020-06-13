@@ -14,6 +14,7 @@ pipelines:
           onExecute:
             - echo "$key1"
             - echo "$run_rumber"
+            - printenv
 
       - name: Simple_Bash_2
         type: Bash
@@ -27,6 +28,7 @@ pipelines:
             - echo "$key1"
             - echo "$key2"
             - echo "Run number - $run_rumber"
+            - printenv
 
       - name: Simple_Bash_3
         type: Bash
@@ -41,3 +43,4 @@ pipelines:
             - echo "$key2"
             - echo "$key3"
             - echo "Run number - $run_rumber"
+            - printenv
