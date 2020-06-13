@@ -88,6 +88,7 @@ pipelines:
             - name: s_artifactory
           inputResources:
             - name: ranjan_artifactory_go_module_example
+            - name: mvnBuild_infopromoted01
           outputResources:
             - name: go_build_info_publish_moduletestss
             
