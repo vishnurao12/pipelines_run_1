@@ -50,6 +50,7 @@ pipelines:
           outputFile: hello
           inputResources:
             - name: artifactory_go_exampletestss
+            - name: mvnBuild_infopromoted01
           integrations:
             - name: s_artifactory
         execution:
