@@ -40,3 +40,4 @@ pipelines:
             - echo "$key1"
             - echo "$key2"
             - echo "$key3"
+            - echo "Run number - $run_rumber"
