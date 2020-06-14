@@ -133,4 +133,17 @@ pipelines:
             - get_step_var matrix_2 addresses
             - export JFROG_CLI_BUILD_NUMBER=1234
             - export RELEASE_VERSION=1234
-            - set_payload incoming "{\"build_number\":\"$JFROG_CLI_BUILD_NUMBER\", \"step_name\":\"$step_name\",\"version\":\"$RELEASE_VERSION\"}"    
+            - set_payload incoming "{\"build_number\":\"$JFROG_CLI_BUILD_NUMBER\", \"step_name\":\"$step_name\",\"version\":\"$RELEASE_VERSION\"}" 
+  
+  - name: Test_incoming_Webhook
+    steps:
+      - name: Test_incoming
+        type: Bash
+        configuration:
+          inputResources:
+            - name: incoming
+        execution:
+          onExecute:
+            - echo "Hello from incoming"
+
+          
