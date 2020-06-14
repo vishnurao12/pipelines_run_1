@@ -131,5 +131,7 @@ pipelines:
             - echo "$int_gen_K"
             - get_step_var matrix_2 test_key
             - get_step_var matrix_2 addresses
+            - export JFROG_CLI_BUILD_NUMBER=1234
+            - export RELEASE_VERSION=1234
             - set_payload incoming "{\"build_number\":\"$JFROG_CLI_BUILD_NUMBER\", \"step_name\":\"$step_name\",\"version\":\"$RELEASE_VERSION\"}"    
     
