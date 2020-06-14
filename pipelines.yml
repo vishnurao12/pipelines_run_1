@@ -18,6 +18,11 @@ resources:
     configuration:
       key1: value1
 
+  - name: incoming
+    type: IncomingWebhook
+    configuration:
+      webhookName: incoming
+
 pipelines:
   - name: Pipeline
     steps:
@@ -115,6 +120,8 @@ pipelines:
             - name: gen
           inputSteps: 
             - name: matrix_2
+          outputResources:
+            - name: incoming
         execution:
           onExecute:
             - echo "Hello World"
@@ -124,16 +131,5 @@ pipelines:
             - echo "$int_gen_K"
             - get_step_var matrix_2 test_key
             - get_step_var matrix_2 addresses
-              
-      - name: ResourceTriggered
-        type: Bash
-        configuration:
-          integrations:
-            - name: gen
-          inputResources: 
-            - name: matrix_property_bag_out
-        execution:
-          onExecute:
-            - get_step_var matrix_2 test_key
-            - get_step_var matrix_2 addresses        
+            - set_payload incoming "{\"build_number\":\"$JFROG_CLI_BUILD_NUMBER\", \"step_name\":\"$step_name\",\"version\":\"$RELEASE_VERSION\"}"    
     
