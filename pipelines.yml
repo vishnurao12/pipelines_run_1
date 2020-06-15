@@ -21,39 +21,9 @@ resources:
 pipelines:
   - name: Pipeline
     steps:
-      - name: Normal_Step
-        type: Bash
-        configuration:
-          inputResources:
-            - name: self_repo
-        execution: 
-          onExecute:
-            - pushd "$res_self_repo_resourcePath/"
-            - save_tests saveTests/empty/temp
-            - save_tests saveTests/correct
-            - echo "Passed"
-            - popd
-
-      - name: Matrix_Fan_Out_1
-        type: FanOut
-        configuration:
-          inputSteps: 
-            - name: Normal_Step      
-        execution: 
-          onExecute:
-            - echo "I am on fan out step"
-            - touch fan_out.txt
-            - set_step_var fan_out value1
-            - echo "Fan out working" > fan_out_1.txt
-
       - name: matrix_2
         type: Matrix
         stepMode: Bash
-        configuration:
-          inputSteps: 
-            - name: Matrix_Fan_Out_1
-          inputResources:
-            - name: self_repo
         stepletMultipliers:
           environmentVariables:
             - delay: 1
@@ -75,27 +45,12 @@ pipelines:
 
         fastFail: true
 
-        allowFailures:
-          - environmentVariables:
-              delay: 1
-              fail: 'true'
+        # allowFailures:
+        #   - environmentVariables:
+        #       delay: 1
+        #       fail: 'true'
               
-        exclude:
-          - environmentVariables:
-              delay: 10
-              fail: 'true'
-
-      - name: Matrix_Fan_In
-        type: FanIn
-        configuration:
-          inputSteps: 
-            - name: matrix_2
-        execution:
-          onExecute:
-            - echo "Hello World"
-            - ls -l .
-            - ls -l ./matrix_2
-            - ls -l ./matrix_2/Matrix_Fan_Out_1/
-            - get_step_var matrix_2 test_key
-            - get_step_var matrix_2 addresses
- 
+        # exclude:
+        #   - environmentVariables:
+        #       delay: 10
+        #       fail: 'true'
