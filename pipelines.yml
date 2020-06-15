@@ -19,7 +19,7 @@ resources:
       key1: value1
 
 pipelines:
-  - name: Pipeline
+  - name: Pipeline_fastFail
     steps:
       - name: matrix_2
         type: Matrix
