@@ -6,18 +6,7 @@ resources:
       branches:
         include: ^master$
       gitProvider: nawaz_gh
-
-  - name: matrix_property_bag_in
-    type: PropertyBag
-    configuration:
-      key1: value1
-      key2: value2
-
-  - name: matrix_property_bag_out
-    type: PropertyBag
-    configuration:
-      key1: value1
-
+      
 pipelines:
   - name: Pipeline_fastFail
     steps:
