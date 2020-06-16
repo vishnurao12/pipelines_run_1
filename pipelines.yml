@@ -73,7 +73,7 @@ pipelines:
             - type: image
               image:
                 auto:
-                  language: node
+                  language: nodejs
                   versions:
                     - 8.17.0
         execution:
