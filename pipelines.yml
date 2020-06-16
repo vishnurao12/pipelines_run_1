@@ -1,5 +1,5 @@
 pipelines:
-  - name: Pipeline
+  - name: Runtrigger_Bug
     steps:
       - name: Normal_Step
         type: Bash
