@@ -55,7 +55,7 @@ pipelines:
                 auto:
                   language: nodejs
                   versions:
-                    - 8.17.0
+                    - 8.17.1
         execution:
           onExecute:
             - echo "I am on matrix step"
