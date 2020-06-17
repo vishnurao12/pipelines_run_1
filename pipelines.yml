@@ -57,7 +57,7 @@ pipelines:
                   versions:
                     - 8.17.0
           exclude:
-            - environmentalVariables:
+            - environmentVariables:
                 env1: changed1
                 env2: changed2
               runtime:
@@ -68,7 +68,7 @@ pipelines:
                     versions:
                       - 8.17.0
           allowFailures:
-            - environmentalVariables:
+            - environmentVariables:
                 env1: one
                 env2: two
                 env3: three
