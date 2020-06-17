@@ -55,7 +55,7 @@ pipelines:
                 auto:
                   language: node
                   versions:
-                    - 8.17.1
+                    - 8.17.0
           exclude:
             - environmentalVariables:
                 env1: changed1
