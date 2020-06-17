@@ -1,5 +1,5 @@
 pipelines:
-  - name: Runtrigger_Bug
+  - name: Yaml_Migration
     steps:
       - name: Normal_Step
         type: Bash
