@@ -87,9 +87,9 @@ pipelines:
                 type: image
                 image:
                   auto:
-                    language: node
+                    language: java
                     versions:
-                      - 8.17.0
+                      - 13.0
           fastFail: false
 
 
