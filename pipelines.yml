@@ -56,6 +56,19 @@ pipelines:
                   language: nodejs
                   versions:
                     - 8.17.1
+          allowFailures:
+            - environmentalVariables:
+                env1: one
+                env2: two
+                env3: three
+              runtime:
+                type: image
+                image:
+                  auto:
+                    language: nodejs
+                    versions:
+                      - 8.17.1
+
         execution:
           onExecute:
             - echo "I am on matrix step"
