@@ -106,7 +106,7 @@ pipelines:
             - get_step_var Matrix_Fan_Out_1 fan_out
             - pushd "$res_self_repo_resourcePath/"
             - |
-              [[ "$env1" = "one" ]]
+              [[ "$env1" != "one" ]]
             # - save_tests saveTests/empty/temp
             # - save_tests saveTests/correct
             # - echo "Passed"
