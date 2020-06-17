@@ -79,7 +79,7 @@ pipelines:
                     language: nodejs
                     versions:
                       - 8.17.0
-          fastFail: true
+          fastFail: false
 
 
         execution:
