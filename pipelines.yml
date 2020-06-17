@@ -76,7 +76,18 @@ pipelines:
                 type: image
                 image:
                   auto:
-                    language: nodejs
+                    language: node
+                    versions:
+                      - 8.17.0
+            - environmentVariables:
+                env1: one
+                env2: two
+                env3: three
+              runtime:
+                type: image
+                image:
+                  auto:
+                    language: node
                     versions:
                       - 8.17.0
           fastFail: false
