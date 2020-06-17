@@ -53,9 +53,20 @@ pipelines:
             - type: image
               image:
                 auto:
-                  language: nodejs
+                  language: node
                   versions:
                     - 8.17.1
+          exclude:
+            - environmentalVariables:
+                env1: changed1
+                env2: changed2
+              runtime:
+                type: image
+                image:
+                  auto:
+                    language: node
+                    versions:
+                      - 8.17.1
           allowFailures:
             - environmentalVariables:
                 env1: one
@@ -68,6 +79,8 @@ pipelines:
                     language: nodejs
                     versions:
                       - 8.17.1
+          fastFail: true
+
 
         execution:
           onExecute:
