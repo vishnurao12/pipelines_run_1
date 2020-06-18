@@ -29,8 +29,8 @@ pipelines:
       - name: Normal_Step
         type: Bash
         configuration:
-          integrations:
-            - name: gen
+          # integrations:
+          #   - name: gen
           inputResources:
             - name: self_repo
         execution: 
@@ -39,7 +39,7 @@ pipelines:
             - save_tests saveTests/empty/temp
             - save_tests saveTests/failing
             - echo "Passed"
-            - echo "$int_gen_K"
+            # - echo "$int_gen_K"
             - popd
 
   #     - name: Matrix_Fan_Out_1
