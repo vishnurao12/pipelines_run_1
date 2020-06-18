@@ -1,0 +1,35 @@
+<!--
+  example taken from: https://git.jfrog.info/Pipelines/support/issues/683#issuecomment-61582922
+-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite name="All tests" hostname="mirek-notas" tests="3" failures="1" errors="0" skipped="1" time="0.011" timestamp="2014-11-04 02:43:12.187">
+  <testcase id="1" name="My test group Test 1" time="0.002"> </testcase>
+  <testcase id="2" name="My test group Test 2" time="0.009">
+    <failure type="assertError">Expected: &lt;0&gt;
+      Actual: &lt;1&gt;
+    </failure>
+    <system-err>
+      package:unittest/src/simple_configuration.dart 122:9  SimpleConfiguration.onExpectFailure
+      package:unittest/src/simple_configuration.dart 15:28  _ExpectFailureHandler.fail
+      package:matcher/src/expect.dart 113:9                 DefaultFailureHandler.failMatch
+    </system-err>
+  </testcase>
+  <testcase id="3" name="My test group Test 3" time="0.002">
+    <skipped/>
+  </testcase>
+  <testcase classname="test.TestSuite" name="My test group Test 4" time="0.000">
+    <failure type="exceptions.AssertionError" message="True is not false">
+      <![CDATA[Traceback (most recent call last):
+      File "/usr/lib/python2.7/unittest/case.py", line 331, in run
+      testMethod()
+      File "/home/devashish/workspace/pipelines/v2/experiments/sample_python/test.py", line 14, in testfail
+      self.failIf(app.retrieve() != 63)
+      File "/usr/lib/python2.7/unittest/case.py", line 614, in deprecated_func
+      return original_func(*args, **kwargs)
+      File "/usr/lib/python2.7/unittest/case.py", line 418, in assertFalse
+      raise self.failureException(msg)
+      AssertionError: True is not false
+      ]]>
+    </failure>
+  </testcase>
+</testsuite>

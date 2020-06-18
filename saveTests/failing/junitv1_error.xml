@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ErrorTestSuiteV1" tests="1" errors="1" failures="0" skip="0">
+    <error message="test.ErrorTestSuiteV1" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: test.ErrorTestSuiteV1Test
+        at java.lang.Class.forName0(Native Method)
+        at java.lang.Class.forName(Class.java:348)
+    </error>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
