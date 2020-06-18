@@ -39,6 +39,7 @@ pipelines:
             - save_tests saveTests/empty/temp
             - save_tests saveTests/failing
             - add_pipeline_files saveTests/failing pipelines_state
+            - add_run_files saveTests/failing run_state
             - echo "Passed"
             # - echo "$int_gen_K"
             - popd
