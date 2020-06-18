@@ -7,21 +7,21 @@ resources:
         include: ^tests-failing$
       gitProvider: nawaz_gh
 
-  - name: matrix_property_bag_in
-    type: PropertyBag
-    configuration:
-      key1: value1
-      key2: value2
+  # - name: matrix_property_bag_in
+  #   type: PropertyBag
+  #   configuration:
+  #     key1: value1
+  #     key2: value2
 
-  - name: matrix_property_bag_out
-    type: PropertyBag
-    configuration:
-      key1: value1
+  # - name: matrix_property_bag_out
+  #   type: PropertyBag
+  #   configuration:
+  #     key1: value1
 
-  - name: incoming
-    type: IncomingWebhook
-    configuration:
-      webhookName: incoming
+  # - name: incoming
+  #   type: IncomingWebhook
+  #   configuration:
+  #     webhookName: incoming
 
 pipelines:
   - name: Pipeline
