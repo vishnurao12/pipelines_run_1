@@ -38,6 +38,7 @@ pipelines:
             - pushd "$res_self_repo_resourcePath/"
             - save_tests saveTests/empty/temp
             - save_tests saveTests/failing
+            - add_pipelines_files saveTests/failing pipelines_state
             - echo "Passed"
             # - echo "$int_gen_K"
             - popd
