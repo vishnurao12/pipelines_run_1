@@ -29,9 +29,7 @@ pipelines:
         execution: 
           onExecute:
             - pushd "$res_self_repo_resourcePath/"
-            - save_tests saveTests/empty/temp
-            - save_tests saveTests/correct
-            - save_tests saveTests/wrong
+            - save_tests saveTests/failing
             - echo "Passed"
             - popd
 
