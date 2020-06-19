@@ -138,7 +138,7 @@ pipelines:
             - echo "state 1 files..."
             - cat matrix_demo/files/*
             - echo "state 2 files"
-            - cat matrix_demo_1/files/*
+            - cat matrix_demo_2/files/*
             - ls -l matrix_demo/fanout_demo
             - get_step_var matrix_demo matrix_envs
             - get_step_var matrix_demo_2 matrix_envs
