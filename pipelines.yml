@@ -200,10 +200,11 @@ pipelines:
             - ls -l matrix_demo/fanout_demo
             - get_step_var matrix_demo matrix_envs
             - get_step_var matrix_demo_2 matrix_envs
-            
+
   - name: Incomming_Pipeline
     steps:
       - name: Should_Trigger
+        type: Bash
         configuration:
           inputResources:
             - name: incoming_wh
