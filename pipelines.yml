@@ -65,6 +65,15 @@ pipelines:
             - key1: value15
             - key1: value16
             - key1: value17
+            - key1: value18
+            - key1: value19
+            - key1: value20
+            - key1: value12
+            - key1: value13
+            - key1: value14
+            - key1: value15
+            - key1: value16
+
           runtimes:
             - type: image
               image:
@@ -72,7 +81,7 @@ pipelines:
                   language: java
                   versions:
                     - 13.0
-                    
+
             - type: image
               image:
                 auto:
