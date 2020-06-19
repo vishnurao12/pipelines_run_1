@@ -72,13 +72,14 @@ pipelines:
                   language: java
                   versions:
                     - 13.0
+                    
             - type: image
               image:
                 auto:
                   language: node
                   versions:
                     - 8.17.0
-                    
+
             - type: image
               image:
                 auto:
@@ -97,6 +98,8 @@ pipelines:
               image:
                 auto:
                   language: cpp
+                  versions:
+                    - 8.0.0
         execution:
           onExecute:
             - echo "Executing matrix step on ${steplet_id}"
