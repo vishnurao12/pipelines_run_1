@@ -73,7 +73,16 @@ pipelines:
             - key1: value14
             - key1: value15
             - key1: value16
-
+          allowFailures:
+            - environmentVariables:
+                key1: value16
+              runtime:
+                  type: image
+                  image:
+                    auto:
+                      language: java
+                      versions:
+                        - 13.0
           runtimes:
             - type: image
               image:
