@@ -1,3 +1,17 @@
+resources:
+  - name: self_repo
+    type: GitRepo
+    configuration:
+      path: Khazinawaz/pipelines_run_1
+      branches:
+        include: ^namechange$
+      gitProvider: nawaz_gh
+
+  - name: incoming_wh
+    type: IncomingWebhook
+    configuration:
+      webhookName: incoming
+
 pipelines:
   - name: Matrix_Demo_Env
     steps:
@@ -73,16 +87,6 @@ pipelines:
             - key1: value14
             - key1: value15
             - key1: value16
-          allowFailures:
-            - environmentVariables:
-                key1: value16
-              runtime:
-                  type: image
-                  image:
-                    auto:
-                      language: java
-                      versions:
-                        - 13.0
           runtimes:
             - type: image
               image:
@@ -196,6 +200,15 @@ pipelines:
             - ls -l matrix_demo/fanout_demo
             - get_step_var matrix_demo matrix_envs
             - get_step_var matrix_demo_2 matrix_envs
-
-
+            
+  - name: Incomming_Pipeline
+    steps:
+      - name: Should_Trigger
+        configuration:
+          inputResources:
+            - name: incoming_wh
+        execution:
+          onStart:
+            - echo "Webhook triggered"
+              
               
