@@ -1,8 +1,16 @@
 pipelines:
   - name: Matrix_Demo_Env
     steps:
+      - name: Start
+        type: Bash
+        execution:
+          onStart:
+            - echo "Lets start"
+
       - name: fanout_demo
         type: PreMatrix
+        configuration:
+          inputSteps: Start
         execution:
           onExecute:
             - echo "Executing fanout step...."
@@ -10,6 +18,8 @@ pipelines:
       
       - name: fanout_demo_2
         type: PreMatrix
+        configuration:
+          inputSteps: Start
         execution:
           onExecute:
             - echo "Executing fanout step...."
@@ -17,6 +27,8 @@ pipelines:
 
       - name: fanout_demo_3
         type: PreMatrix
+        configuration:
+          inputSteps: Start
         execution:
           onExecute:
             - echo "Executing fanout step...."
