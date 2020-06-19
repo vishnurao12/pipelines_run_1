@@ -200,7 +200,7 @@ pipelines:
             - echo "state 2 files"
             - cat matrix_demo_2/files/*
             - ls -l matrix_demo/fanout_demo
-            - pushd "$res_self_repo_resourcePath"
+            - pushd "$res_self_repo_resourcePath/docker/"
             - export imageName="192.168.50.4/docker-local/sample:0.0.${run_number}"
             - docker build -t  $imageName . 
             - jfrog rt docker-push $imageName docker-local
