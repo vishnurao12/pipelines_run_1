@@ -184,6 +184,8 @@ pipelines:
       - name: fanin_demo
         type: PostMatrix
         configuration:
+          inputResources:
+            - name: self_repo
           inputSteps: 
             - name: matrix_demo
             - name: matrix_demo_2
@@ -198,6 +200,11 @@ pipelines:
             - echo "state 2 files"
             - cat matrix_demo_2/files/*
             - ls -l matrix_demo/fanout_demo
+            - pushd "$res_self_repo_resourcePath"
+            - export imageName="192.168.50.4/docker-local/sample:0.0.${run_number}"
+            - docker build -t  $imageName . 
+            - jfrog rt docker-push $imageName docker-local
+            - popd
             - get_step_var matrix_demo matrix_envs
             - get_step_var matrix_demo_2 matrix_envs
 
