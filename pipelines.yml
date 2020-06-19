@@ -51,6 +51,20 @@ pipelines:
               key2: value2
             - key1: value3
               key2: value4
+            - key1: value5
+            - key1: value6
+            - key1: value7
+            - key1: value8
+            - key1: value8
+            - key1: value9
+            - key1: value10
+            - key1: value11
+            - key1: value12
+            - key1: value13
+            - key1: value14
+            - key1: value15
+            - key1: value16
+            - key1: value17
           runtimes:
             - type: image
               image:
