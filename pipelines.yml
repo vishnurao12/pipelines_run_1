@@ -37,7 +37,7 @@ pipelines:
             - echo "Executing matrix step on ${steplet_id}"
             - cat ./fanout_demo/input.txt
             - touch input
-            - cat ./fanout_demo/input.txt ./fanout_demo_2/input.txt ./fanout_demo_3/input.txt > input.txt
+            - cat ./fanout_demo/input.txt > input.txt
             - mkdir -p files
             - echo "-----"
             - echo "File got created in steplet ${steplet_number}" >> ./files/${steplet_number}.txt
