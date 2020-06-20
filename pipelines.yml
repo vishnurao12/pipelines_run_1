@@ -1,14 +1,27 @@
 pipelines:
   - name: Matrix_Refactor
     steps:
+      - name: start
+        type: Bash
+        execution:
+          onStart:
+            - echo "Start"
+
       - name: fanout_demo
         type: PreMatrix
+        configuration:
+          inputSteps:
+            - name: start
         execution:
           onExecute:
             - echo "Executing fanout step...."
             - echo "File got created in fanout step" >> input.txt
+
       - name: fanout_demo_1
         type: PreMatrix
+        configuration:
+          inputSteps:
+            - name: start
         execution:
           onExecute:
             - echo "Executing fanout step...."
