@@ -1,19 +1,5 @@
-resources:
-  - name: self_repo
-    type: GitRepo
-    configuration:
-      path: Khazinawaz/pipelines_run_1
-      branches:
-        include: ^namechange$
-      gitProvider: nawaz_gh
-
-  - name: incoming_wh
-    type: IncomingWebhook
-    configuration:
-      webhookName: incoming
-
 pipelines:
-  - name: Matrix_Demo_Env
+  - name: Matrix_Refactor
     steps:
       - name: fanout_demo
         type: PreMatrix
