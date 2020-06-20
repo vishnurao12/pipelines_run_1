@@ -7,6 +7,12 @@ pipelines:
           onExecute:
             - echo "Executing fanout step...."
             - echo "File got created in fanout step" >> input.txt
+      - name: fanout_demo_1
+        type: PreMatrix
+        execution:
+          onExecute:
+            - echo "Executing fanout step...."
+            - echo "File got created in fanout step" >> input.txt
 
       - name: matrix_demo
         type: Matrix
@@ -14,6 +20,7 @@ pipelines:
         configuration:
           inputSteps:
             - name: fanout_demo
+            - name: fanout_demo_1
         stepletMultipliers:
           environmentVariables:
             - key1: value1
@@ -36,6 +43,46 @@ pipelines:
           onExecute:
             - echo "Executing matrix step on ${steplet_id}"
             - cat ./fanout_demo/input.txt
+            - cat ./fanout_demo_1/input.txt
+            - touch input
+            - cat ./fanout_demo/input.txt > input.txt
+            - mkdir -p files
+            - echo "-----"
+            - echo "File got created in steplet ${steplet_number}" >> ./files/${steplet_number}.txt
+            - echo "Running on runtime ${step_image_name}:${step_image_tag}" >> ./files/${steplet_number}.txt
+            - echo "-----"
+            - set_step_var matrix_envs "key1 = ${key1},key2 = ${key2}"
+
+      - name: matrix_demo_2
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          inputSteps:
+            - name: fanout_demo
+            - name: fanout_demo_1
+        stepletMultipliers:
+          environmentVariables:
+            - key1: value1
+              key2: value2
+          runtimes:
+            - type: image
+              image:
+                auto:
+                  language: java
+                  versions:
+                    - 13.0
+
+            - type: image
+              image:
+                auto:
+                  language: node
+                  versions:
+                    - 8.17.0
+        execution:
+          onExecute:
+            - echo "Executing matrix step on ${steplet_id}"
+            - cat ./fanout_demo/input.txt
+            - cat ./fanout_demo_1/input.txt
             - touch input
             - cat ./fanout_demo/input.txt > input.txt
             - mkdir -p files
@@ -50,11 +97,13 @@ pipelines:
         configuration:
           inputSteps: 
             - name: matrix_demo
+            - name: matrix_demo_2
         execution:
           onExecute:
             - echo "Executing fanin step"
             - echo "Matrix state files..."
             - ls -l matrix_demo/files/
+            - ls -l matrix_demo_2/files/
             - echo "state 1 files..."
             - cat matrix_demo/files/*
             - get_step_var matrix_demo matrix_envs
