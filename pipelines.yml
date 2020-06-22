@@ -26,6 +26,8 @@ pipelines:
           onExecute:
             - echo "Executing fanout step...."
             - echo "File got created in fanout step" >> input.txt
+          onComplete:
+            - echo "Should execute first"
 
       - name: matrix_demo
         type: Matrix
