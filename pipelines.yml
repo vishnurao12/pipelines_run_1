@@ -28,9 +28,6 @@ pipelines:
     steps:
       - name: step1
         type: Bash
-        configuration:
-          inputResources:
-            - name: self_repo
         execution: 
           onExecute:
             - echo "Step 1"
