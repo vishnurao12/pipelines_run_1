@@ -46,7 +46,7 @@ pipelines:
             - name: step1
         execution: 
           onStart:
-            - restore_run_files file ./file1
+            - restore_run_files file ./file
           onExecute:
             - echo "Step 2"
             - cat file
