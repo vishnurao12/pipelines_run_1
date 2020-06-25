@@ -52,7 +52,8 @@ pipelines:
             - cat file
             - echo "Step 3" >> file
             - add_run_files ./file file
-            - write_output property_bag date=(date)
+            - date=$(date)
+            - write_output property_bag "date=$date"
 
       - name: step3
         type: Bash
