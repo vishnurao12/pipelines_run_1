@@ -52,6 +52,24 @@ pipelines:
             - date=$(date)
             - write_output property_bag "date=$date"
 
+      - name: step4
+        type: Bash
+        configuration:
+          outputResources:
+            - name: property_bag
+          inputSteps:
+            - name: step1
+        execution: 
+          onStart:
+            - restore_run_files file ./file
+          onExecute:
+            - echo "Step 4"
+            - cat file
+            - echo "Step 4" >> file
+            - add_run_files ./file file
+            - date=$(date)
+            - write_output property_bag "date1=$date"
+
       - name: step3
         type: Bash
         configuration:
