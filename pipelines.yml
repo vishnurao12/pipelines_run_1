@@ -2,10 +2,10 @@ resources:
   - name: self_repo
     type: GitRepo
     configuration:
-      path: Khazinawaz/pipelines_run_1
+      path: vishnurao12/pipelines_run_1
       branches:
         include: ^tests-failing$
-      gitProvider: nawaz_gh
+      gitProvider: git_v
 
   - name: matrix_property_bag_in
     type: PropertyBag
