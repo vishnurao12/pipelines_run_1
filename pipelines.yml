@@ -34,7 +34,7 @@ pipelines:
             - popd
 
       - name: Matrix_Fan_Out_1
-        type: FanOut
+        type: preMatrix
         configuration:
           inputSteps: 
             - name: Normal_Step      
@@ -94,7 +94,7 @@ pipelines:
             - ls -l .
       
       - name: Matrix_Fan_In
-        type: FanIn
+        type: postMatrix
         configuration:
           inputSteps: 
             - name: matrix_2
